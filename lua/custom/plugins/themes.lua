@@ -26,6 +26,12 @@ return {
           'duskfox',
           'carbonfox',
           'terafox',
+          -- cyberdream
+          'cyberdream',
+          -- kanagawa
+          'kanagawa-wave',
+          'kanagawa-lotus',
+          'kanagawa-dragon',
         },
         livePreview = true,
       }
@@ -50,6 +56,14 @@ return {
   },
   {
     'EdenEast/nightfox.nvim',
+    priority = 1000,
+  },
+  {
+    'scottmckendry/cyberdream.nvim',
+    priority = 1000,
+  },
+  {
+    'rebelot/kanagawa.nvim',
     priority = 1000,
   },
 }
