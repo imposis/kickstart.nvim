@@ -556,6 +556,17 @@ require('lazy').setup({
           { name = 'luasnip' },
           { name = 'path' },
         },
+        window = {
+          completion = { -- rounded border; thin-style scrollbar
+            border = 'rounded',
+            scrollbar = '║',
+          },
+          documentation = { -- no border; native-style scrollbar
+            border = 'rounded',
+            scrollbar = '║',
+            -- other options
+          },
+        },
       }
     end,
   },
@@ -634,6 +645,7 @@ require('lazy').setup({
 })
 
 require 'custom.config.lspconfig'
+require 'custom.config.borders'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
