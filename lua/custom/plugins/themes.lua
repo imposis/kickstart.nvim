@@ -26,6 +26,19 @@ return {
     end,
     keys = {
       { '<leader>ts', ':Themery<CR>', desc = 'Theme select' },
+      {
+        '<leader>tt',
+        function()
+          local themery = require 'themery'
+          local currentTheme = themery.getCurrentTheme()
+          if currentTheme and currentTheme.name == 'hyper' then
+            themery.setThemeByName('dayfox', true)
+          else
+            themery.setThemeByName('hyper', true)
+          end
+        end,
+        desc = 'Toggle dark/light',
+      },
     },
   },
   {
