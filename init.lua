@@ -527,6 +527,8 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'amarakon/nvim-cmp-buffer-lines',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
       'onsails/lspkind-nvim',
     },
     config = function()
@@ -591,9 +593,7 @@ require('lazy').setup({
           { name = 'nvim_lsp', priority = 500 },
           { name = 'luasnip', priority = 400 },
           { name = 'path', priority = 300 },
-          { name = 'buffer-lines', option = {
-            max_indents = 1,
-          }, priority = 200 },
+          { name = 'buffer', priority = 200 },
         },
         window = {
           completion = cmp.config.window.bordered(),
@@ -614,8 +614,9 @@ require('lazy').setup({
               local source_table = {
                 nvim_lsp = '',
                 luasnip = '',
-                ['buffer-lines'] = '',
+                ['buffer'] = '',
                 path = '',
+                cmdline = '',
               }
               local source = entry.source.name
               if source_table[source] then
@@ -628,6 +629,21 @@ require('lazy').setup({
           },
         },
       }
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources {
+          { name = 'path' },
+          { name = 'cmdline' },
+        },
+      })
+
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' },
+        },
+      })
     end,
   },
   -- Highlight todo, notes, etc in comments

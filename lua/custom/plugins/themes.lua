@@ -12,6 +12,9 @@ return {
           'catppuccin-latte',
           'catppuccin-frappe',
           'catppuccin-mocha',
+          'kanagawa-dragon',
+          'kanagawa-wave',
+          'kanagawa-lotus',
         },
         livePreview = true,
       }
@@ -38,4 +41,5 @@ return {
     },
   },
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+  { 'rebelot/kanagawa.nvim', name = 'kanagawa', priority = 1000 },
 }
