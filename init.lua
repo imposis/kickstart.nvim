@@ -530,6 +530,7 @@ require('lazy').setup({
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'onsails/lspkind-nvim',
+      'MeanderingProgrammer/render-markdown.nvim',
     },
     config = function()
       -- See `:help cmp`
@@ -594,6 +595,7 @@ require('lazy').setup({
           { name = 'luasnip', priority = 400 },
           { name = 'path', priority = 300 },
           { name = 'buffer', priority = 200 },
+          { name = 'render-markdown' },
         },
         window = {
           completion = cmp.config.window.bordered(),
