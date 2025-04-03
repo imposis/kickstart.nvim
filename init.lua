@@ -15,10 +15,6 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
 
--- code folding
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -80,14 +76,27 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
-vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
-vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
-vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
+vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
+vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
+vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
 -- Buffer navigation
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>', { desc = '[B]uffer [N]ext' })
 vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>', { desc = '[B]uffer [P]revious' })
 vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = '[B]uffer [D]elete' })
+-- Lsp functions
+vim.keymap.set('n', '<leader>lse', function()
+  return vim.cmd 'LspStart'
+end, { desc = 'LSP [E]nable' })
+vim.keymap.set('n', '<leader>lsd', function()
+  return vim.cmd 'LspStop'
+end, { desc = 'LSP [D]isable' })
+vim.keymap.set('n', '<leader>lsi', function()
+  return vim.cmd 'LspInfo'
+end, { desc = 'LSP [I]nfo' })
+vim.keymap.set('n', '<leader>lsl', function()
+  return vim.cmd 'LspLog'
+end, { desc = 'LSP [L]og' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -335,7 +344,7 @@ require('lazy').setup({
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
           local function client_supports_method(client, method, bufnr)
-	      return client:supports_method(method, bufnr)
+            return client:supports_method(method, bufnr)
           end
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -503,12 +512,10 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
       'amarakon/nvim-cmp-buffer-lines',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-cmdline',
       'onsails/lspkind-nvim',
-      'MeanderingProgrammer/render-markdown.nvim',
     },
     config = function()
       -- See `:help cmp`
@@ -573,7 +580,6 @@ require('lazy').setup({
           { name = 'luasnip', priority = 400 },
           { name = 'path', priority = 300 },
           { name = 'buffer', priority = 200 },
-          { name = 'nvim_lsp_signature_help' },
           { name = 'render-markdown' },
         },
         window = {
@@ -707,8 +713,6 @@ require('lazy').setup({
   },
 })
 
-require 'custom.config.lspconfig'
-require 'custom.config.borders'
 require('lsp_signature').on_attach()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
