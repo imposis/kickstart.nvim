@@ -5,16 +5,16 @@ return {
     config = function()
       require('themery').setup {
         themes = {
-          -- neovim-default
-          'delek',
-          'industry',
-          'minischeme',
           'catppuccin-latte',
           'catppuccin-frappe',
           'catppuccin-mocha',
           'kanagawa-dragon',
           'kanagawa-wave',
           'kanagawa-lotus',
+          'tokyonight-night',
+          'tokyonight-day',
+          'tokyonight-storm',
+          'tokyonight-moon',
         },
         livePreview = true,
       }
@@ -42,4 +42,5 @@ return {
   },
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   { 'rebelot/kanagawa.nvim', name = 'kanagawa', priority = 1000 },
+  { 'folke/tokyonight.nvim', name = 'tokyonight', priority = 1000 },
 }

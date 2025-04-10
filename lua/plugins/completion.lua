@@ -6,7 +6,7 @@ return {
     version = 'v0.*',
 
     opts = {
-      keymap = { preset = 'none', ['<Tab>'] = { 'select_next', 'fallback' }, ['<S-Tab>'] = { 'select_prev', 'fallback' }, ['<Enter>'] = { 'accept' } },
+      keymap = { preset = 'none', ['<Tab>'] = { 'select_next', 'fallback' }, ['<S-Tab>'] = { 'select_prev', 'fallback' }, ['<A-a>'] = { 'accept' } },
 
       appearance = {
         use_nvim_cmp_as_default = true,
