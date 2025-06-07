@@ -1,5 +1,5 @@
 return {
   cmd = { 'ols' },
   filetypes = { 'odin' },
-  root_markers = { '.git' },
+  root_markers = { '.git', 'main.odin' },
 }

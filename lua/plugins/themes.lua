@@ -15,6 +15,9 @@ return {
           'tokyonight-day',
           'tokyonight-storm',
           'tokyonight-moon',
+          'vim',
+          'default',
+          'unokai',
         },
         livePreview = true,
       }
@@ -40,7 +43,7 @@ return {
       },
     },
   },
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-  { 'rebelot/kanagawa.nvim', name = 'kanagawa', priority = 1000 },
+  { 'catppuccin/nvim',       name = 'catppuccin', priority = 1000 },
+  { 'rebelot/kanagawa.nvim', name = 'kanagawa',   priority = 1000 },
   { 'folke/tokyonight.nvim', name = 'tokyonight', priority = 1000 },
 }
